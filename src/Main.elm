@@ -20,6 +20,8 @@ init =
 type Msg
     = Increment
     | Decrement
+    | Reset
+    | Times
 
 update : Msg -> Model -> Model
 update msg model =
@@ -28,6 +30,11 @@ update msg model =
         model + 1
     Decrement ->
         model - 1
+    Reset ->
+        model - model
+    Times ->
+        model * 10
+
 
 -- VIEW
 
@@ -37,4 +44,6 @@ view model =
      [ button [onClick Decrement] [ text "_" ]
      , div [] [ text (String.fromInt model) ]
      , button [ onClick Increment] [text "+"]
+     ,div [] [button [onClick Reset] [text "Reset"]]
+     ,div [] [button [onClick  Times] [text "10times"] ]
      ]
